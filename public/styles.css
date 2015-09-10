@@ -16,3 +16,12 @@ table.brief {
     text-align: center;
     border-bottom: 1px solid #cccccc;
 }
+
+footer {
+    padding-top: 100px;
+    text-align: center;
+}
+
+footer a {
+    color: #cccccc;
+}
