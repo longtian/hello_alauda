@@ -190,9 +190,6 @@
         <div class="shadow"></div>
     </div>
 </div>
-<div data-marked="README.md"></div>
-
-<h2>服务器信息</h2>
 <table class="brief">
 
     <tr>
@@ -235,7 +232,6 @@
 
 </body>
 <script src="jquery-2.1.3.js"></script>
-<script src="marked.min.js"></script>
 <script src="components.js"></script>
 <script type="text/javascript">
     $(function () {
@@ -273,16 +269,6 @@
         for (var i = 0; i < components.length; i++) {
             bindComponet(components[i]);
         }
-
-
-        $('[data-marked]').each(function () {
-            var _this = this;
-            $.ajax({
-                url: $(this).data('marked')
-            }).then(function (txt) {
-                $(_this).html(marked(txt))
-            })
-        })
 
     })
 

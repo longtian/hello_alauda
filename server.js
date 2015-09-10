@@ -2,7 +2,7 @@
  * Created by yan on 15-9-10.
  */
 
-//var oneapm = require('oneapm');
+var oneapm = require('oneapm');
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -18,13 +18,6 @@ components.forEach(function (c) {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-app.get('/README.md', function (req, res) {
-    require('fs')
-        .createReadStream(path.join(__dirname, 'README.md'))
-        .pipe(res);
-})
 
 app.get('/brief', function (req, res) {
 
