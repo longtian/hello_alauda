@@ -94,9 +94,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link href="default.css" rel="stylesheet"/>
-    <link href="movement.css" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
@@ -189,13 +190,75 @@
         <div class="shadow"></div>
     </div>
 </div>
+<div data-marked="README.md"></div>
+
+<h2>服务器信息</h2>
+<table class="brief">
+
+    <tr>
+        <th>node.js</th>
+        <td data-name='version'></td>
+    </tr>
+
+    <tr>
+        <th>v8</th>
+        <td data-name='versions.v8'></td>
+    </tr>
+
+    <tr>
+        <th>libuv</th>
+        <td data-name='versions.uv'></td>
+    </tr>
+
+    <tr>
+        <th>进程号</th>
+        <td data-name='pid'></td>
+    </tr>
+
+    <tr>
+        <th>运行时间（秒）</th>
+        <td data-name='uptime'></td>
+    </tr>
+
+    <tr>
+        <th>主机名</th>
+        <td data-name='hostname'></td>
+    </tr>
+
+    <tr>
+        <th>Release</th>
+        <td data-name='release'></td>
+    </tr>
+
+</table>
+
+
 </body>
 <script src="jquery-2.1.3.js"></script>
+<script src="marked.min.js"></script>
 <script src="components.js"></script>
 <script type="text/javascript">
     $(function () {
 
+        function extract(obj, key) {
+            var keys = key.split('.');
+            var i = 0;
+            var result = obj;
+            while (i < keys.length) {
+                result = result[keys[i]]
+                i++;
+            }
+            return result;
+        }
 
+        $.getJSON('brief', function (result) {
+
+            $('[data-name]').each(function () {
+                var key = $(this).data('name');
+                $(this).text(extract(result, key));
+            })
+
+        })
         function bindComponet(name) {
             $('.' + name).addClass('clickable').click(function () {
                 $.get('../' + name);
@@ -208,12 +271,18 @@
 
 
         for (var i = 0; i < components.length; i++) {
-
-            console.log(components[i]);
-
             bindComponet(components[i]);
         }
 
+
+        $('[data-marked]').each(function () {
+            var _this = this;
+            $.ajax({
+                url: $(this).data('marked')
+            }).then(function (txt) {
+                $(_this).html(marked(txt))
+            })
+        })
 
     })
 
