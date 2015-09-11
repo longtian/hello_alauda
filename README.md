@@ -22,7 +22,9 @@ Demo 应用主要包括：
 
 ## 创建代码库
 
-即本 Repo ，要保证根目录下需要有一个[Dockerfile](https://github.com/wyvernnot/hello_alauda/blob/master/Dockerfile)，来看看每一行的含义：
+即本 Repo 。
+
+除了上面 Demo 的代码，还要保证根目录下需要有一个[Dockerfile](https://github.com/wyvernnot/hello_alauda/blob/master/Dockerfile)，来看看每一行的含义：
 
 1\. `Docker` 环境使用 Node.JS 4.0.0 非常简单，一行搞定
 
