@@ -148,5 +148,5 @@ OneAPM 的视角是自顶向下的，能够细分不同请求的吞吐量，响�
 ## 总结
 
 - 灵雀云和 OneAPM 都能很好的支持 Node.JS 4.0.0 应用
-- 灵雀云上使用 OneAPM 的 Node.JS 探针 只需要在 `Dockerfile` 里加上 `ONEAPM_*` 环境变量
+- 灵雀云上使用 OneAPM 的 Node.JS 探针需要添加 OneAPM [依赖](https://github.com/wyvernnot/hello_alauda/blob/master/server.js#L5)，并在 `Dockerfile` 里加上 `ONEAPM_*` 环境变量
 - 灵雀云和 OneAPM 监控的视角不一样，配合使用效果最佳
