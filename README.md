@@ -62,6 +62,12 @@ CMD ["npm","start"]
 
 ![新建](public/screenshot_create.png)
 
+建立好的构建仓库
+
+![镜像列表](public/screenshot_alauda.png)
+
+[仓库在Hub上的地址](https://hub.alauda.cn/repos/wangyan/hello_alauda)
+
 ## 开始构建
 
 镜像仓库和镜像构建仓库的不同就在与这个 `构建` 的过程。你可以随时从 Gihub 上的最新（或指定）版本创建新的构建，构建完便得到新的一个镜像。
@@ -74,7 +80,7 @@ CMD ["npm","start"]
 
 这是构建仓库所有镜像的列表，此时你已经可以放心的下载到本地环境运行，并且可以随意切换不同的镜像版本。
 
-![镜像列表](public/screenshot_alauda.png)
+![构建](public/screenshot_build.png)
 
 重要的事情说三遍：
 
