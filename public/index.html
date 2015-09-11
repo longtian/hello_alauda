@@ -263,6 +263,7 @@
             $('.' + name).addClass('clickable').click(function () {
                 $.get('../' + name);
                 $("#component").text('\'s ' + name);
+                $(this).addClass('focus')
             })
         }
 
