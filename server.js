@@ -8,7 +8,7 @@ var redis = require('redis');
 var redisOptions = {};
 
 if (process.env.REDIS_PASSWORD) {
-    redisOptions.auth_pass = REDIS_PASSWORD;
+    redisOptions.auth_pass = process.env.REDIS_PASSWORD;
 }
 
 var client = redis.createClient(process.env.REDIS_PORT_6379_TCP_PORT, process.env.REDIS_PORT_6379_TCP_ADDR, redisOptions);
