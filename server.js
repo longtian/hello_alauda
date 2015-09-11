@@ -4,7 +4,14 @@
 
 var oneapm = require('oneapm');
 var redis = require('redis');
-var client = redis.createClient(process.env.REDIS_PORT_6379_TCP_PORT, process.env.REDIS_PORT_6379_TCP_ADDR, {});
+
+var redisOptions = {};
+
+if (process.env.REDIS_PASSWORD) {
+    redisOptions.auth_pass = REDIS_PASSWORD;
+}
+
+var client = redis.createClient(process.env.REDIS_PORT_6379_TCP_PORT, process.env.REDIS_PORT_6379_TCP_ADDR, redisOptions);
 var express = require('express');
 var app = express();
 var path = require('path');
