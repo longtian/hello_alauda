@@ -261,8 +261,9 @@
         })
         function bindComponet(name) {
             $('.' + name).addClass('clickable').click(function () {
-                $.get('../' + name);
-                $("#component").text('\'s ' + name);
+                $.getJSON('./' + name, function (json) {
+                    $("#component").text('\'s ' + name + ' count:' + json.count);
+                });
                 $(this).addClass('focus')
             })
         }

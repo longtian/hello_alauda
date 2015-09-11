@@ -7,7 +7,7 @@
     min-width: 300px;
     margin: 15px auto;
     padding: 0 20px;
-    height: 450px;
+    height: 380px;
     box-sizing: border-box;
     -webkit-perspective: 800px;
     -moz-perspective: 800px;
@@ -26,7 +26,7 @@
     font-weight: 100;
     letter-spacing: 0.5px;
     color: #666666;
-    font-size: 2em;
+    font-size: 1.2em;
     text-align: center;
 }
 
