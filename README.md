@@ -1,4 +1,4 @@
-# NodeJS 4.0.0，灵雀云和 OneAPM 的整合测试
+# Node.JS 4.0.0，灵雀云和 OneAPM 的整合测试
 
 ### 关于
 
@@ -24,22 +24,22 @@ Demo 应用主要包括：
 
 即本 Repo ，要保证根目录下需要有一个[Dockerfile](https://github.com/wyvernnot/hello_alauda/blob/master/Dockerfile)，来看看每一行的含义：
 
-1\. Docker 环境使用 NodeJS 4.0.0 比较简单，一行就搞定
+1\. `Docker` 环境使用 Node.JS 4.0.0 非常简单，一行搞定
 
 ```
 FROM node:4.0.0
 ```
 
-2\. 加上 Maintaner 信息
+2\. 加上维护者信息
 
 ```
-MAINTAINER wyvernnot wyvernnot@gmail.com
+MAINTAINER wyvernnot wyvernnot@users.noreply.github.com
+```
+
+3\. 拷贝文件进 `Docker` 镜像，安装 `NPM` 依赖
+
+```
 COPY . .
-```
-
-3\. 安装 NPM 依赖
-
-```
 RUN npm install
 ```
 
@@ -103,23 +103,43 @@ CMD ["npm","start"]
 
 ## 监控
 
-想知道网站访问量，响应时间，网络分布等需要安装 OneAPM 探针。从 `1.2.8` 版本开始，OneAPM 探针的安装已经和 Node.JS 其它模块的安装没有区别了。
-特别感谢`死月`等一大批用户坚持不懈的建（tu）议（cao）！ 
+灵雀云本身已经能够提供非常基础的监控。想知道网站访问量，响应时间，用户网络分布等则需要安装 OneAPM 探针。
+从 `v1.2.8` 版本开始，OneAPM 探针的安装已经和 Node.JS 其它模块的安装没有区别了。
+
+```sh
+npm install oneapm --save
+```
+
+要特别感谢`死月`等一大批用户坚持不懈的建（tu）议（cao）！ 
 
 ### CPU/内存
 
-OneAPM 和 灵雀云都提供了服务的 CPU 和内存的监控，数据还算比较吻合。
+灵雀云和 OneAPM 都提供了服务 CPU 和内存的监控，数据还算比较吻合。
 
-![OneAPM](public/screenshot_monitor_oneapm.png)
+灵雀云
 
 ![alauda](public/screenshot_monitor_alauda.png)
+
+OneAPM
+
+![OneAPM](public/screenshot_monitor_oneapm.png)
 
 ### 吞吐量
 
 由于基因的不同，OneAPM 和 灵雀云对吞吐量的关注点略有不同，从下图可以看出来。
 
-![OneAPM](public/screenshot_pv.png)
+灵雀云
 
 ![alauda](public/screenshot_network.png)
 
+OneAPM
+
+![OneAPM](public/screenshot_pv.png)
+
 OneAPM 的视角是自顶向下的，能够细分不同请求的吞吐量，响应时间等。而灵雀云的监控则是自底向上的，对流量的监控是整体的，并且精确到了字节。
+
+## 总结
+
+- 灵雀云和 OneAPM 都能很好的支持 Node.JS 4.0.0 应用
+- 灵雀云上使用 OneAPM 的 Node.JS 探针 只需要在 `Dockerfile` 里加上 `ONEAPM_*` 环境变量
+- 灵雀云和 OneAPM 监控的视角不一样，配合使用效果最佳
